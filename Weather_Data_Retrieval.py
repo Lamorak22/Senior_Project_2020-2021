@@ -9,8 +9,8 @@ os.chdir("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation")
 # Setting up parameters for the excel file.
 # Code taken from https://pypi.org/project/wwo-hist/
 frequency=24
-start_date = '11-DEC-2010'
-end_date = '01-AUG-2020'
+start_date = '01-JAN-2010'
+end_date = '27-SEP-2020'
 api_key = '1354d0c9698c486ea3e191604200408'
 location_list = ['97603']
 
