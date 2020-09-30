@@ -17,8 +17,9 @@ date_dict = {
 
 index = 0
 date = "6/1"
-
+avg_temp = 0
 plant_time = 3
+total_days = 0
 
 #Find the date within the dataframe
 def findDate(index, date):
@@ -35,8 +36,19 @@ def findDate(index, date):
 
 
 
+
+    
+         
+#     for i in range(0, date_dict[f'{date[0]}']):
+#         avg_tmp += tmp[index]
+#         index += 1
+
+#     print("Total temp: ", avg_tmp)
+#     print("Average temperature is", avg_tmp/60, "C")
+
+
 # Read the input csv file
-df = pd.read_csv("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603_24hr.csv")#.set_index('date_time')
+df = pd.read_csv("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603.csv")#.set_index('date_time')
 date_t = df['date_time']
 tmp = df['tempC']
 
@@ -50,15 +62,10 @@ for x in range(0,5):
     print(index_list)
 
 
-avg_tmp = 0
-for i in range(0, date_dict[f'{date[0]}']):
-    avg_tmp += tmp[index]
-    index += 1
-
-print("Total temp: ", avg_tmp)
-print("Average temperature is", avg_tmp/60, "C")
+indextmp = 151
+for i in range(0, 91):
+    avg_temp += tmp[indextmp]
+    print(avg_temp)
 
 
-
-
-
+print(avg_temp/92)
