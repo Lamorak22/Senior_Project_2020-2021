@@ -16,9 +16,10 @@ date_dict = {
 
 
 index = 0
-date = "6/1"
+date = "8/11"
 avg_temp = 0
-plant_time = 3
+plant_time_months = 3
+plant_time_days = 0
 total_days = 0
 
 #Find the date within the dataframe
@@ -35,18 +36,6 @@ def findDate(index, date):
             index += 1
 
 
-
-
-    
-         
-#     for i in range(0, date_dict[f'{date[0]}']):
-#         avg_tmp += tmp[index]
-#         index += 1
-
-#     print("Total temp: ", avg_tmp)
-#     print("Average temperature is", avg_tmp/60, "C")
-
-
 # Read the input csv file
 df = pd.read_csv("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603.csv")#.set_index('date_time')
 date_t = df['date_time']
@@ -55,17 +44,27 @@ tmp = df['tempC']
 
 # Find all of the indexes of selected date
 index_list = [0,0,0,0,0]
-for x in range(0,5):
+for x in range(0,len(index_list)):
     index = findDate(index, date)
     index_list[x] = index
     index += 1
     print(index_list)
 
 
-indextmp = 151
-for i in range(0, 91):
-    avg_temp += tmp[indextmp]
-    print(avg_temp)
+#Find exact amount of days
+tempvar = date[0]
+tempvar = int(tempvar)
+for i in range(0, plant_time_months):
+    plant_time_days += date_dict[f"{tempvar}"]
+    tempvar += 1
+    print(plant_time_days)
+
+# Get the total temperature from each index for the date
+for x in index_list:
+    for i in range(0, plant_time_days):
+        print("Current index: ", x)
+        avg_temp += tmp[x]
+        print("Loop #: ", i, "Temp: ", avg_temp)
 
 
-print(avg_temp/92)
+print(avg_temp/450)
