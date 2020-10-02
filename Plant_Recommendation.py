@@ -1,5 +1,6 @@
 import pandas as pd
 
+# Dictionary for amount of days for each month
 date_dict = {
  '1': 31,
  '2': 28,
@@ -14,9 +15,9 @@ date_dict = {
  '11': 30,
  '12': 31}
 
-
+# All used variables
 index = 0
-date = "8/11"
+date = "1/11"
 avg_temp = 0
 plant_time_months = 3
 plant_time_days = 0
@@ -30,17 +31,31 @@ def findDate(index, date):
         result = date_t[index].find(date + '/')
         if result != -1:
             date_flag = True
-            print("Date found at index: ", index)
+            #print("Date found at index: ", index)
             return index
         else:
             index += 1
 
 
-# Read the input csv file
+# Read the file for weather data
 df = pd.read_csv("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603.csv")#.set_index('date_time')
 date_t = df['date_time']
 tmp = df['tempC']
 
+# Read the plant database
+df2 = pd.read_excel("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\Plant_Database.xlsx")
+plant = df2['Plant']
+min_tempC = df2['min_tempC']
+growth_time = df2['growth_time_days']
+
+print(plant)
+print(min_tempC)
+print(growth_time)
+
+
+print("What would you like to plant?")
+input1 = input()
+print(input1)
 
 # Find all of the indexes of selected date
 index_list = [0,0,0,0,0]
@@ -62,9 +77,10 @@ for i in range(0, plant_time_months):
 # Get the total temperature from each index for the date
 for x in index_list:
     for i in range(0, plant_time_days):
-        print("Current index: ", x)
+        #print("Current index: ", x)
         avg_temp += tmp[x]
-        print("Loop #: ", i, "Temp: ", avg_temp)
+        #print("Loop #: ", i, "Temp: ", avg_temp)
 
 
-print(avg_temp/450)
+print(avg_temp/(plant_time_days*len(index_list)))
+
