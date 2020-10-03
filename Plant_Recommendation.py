@@ -53,9 +53,18 @@ print(min_tempC)
 print(growth_time)
 
 
+# Find what you want to plant
 print("What would you like to plant?")
 input1 = input()
 print(input1)
+
+for x in range(0, len(plant)):
+    print(x)
+    if x == input1:
+        plant_time_days = growth_time
+        print(plant_time_days)
+
+
 
 # Find all of the indexes of selected date
 index_list = [0,0,0,0,0]
@@ -67,15 +76,16 @@ for x in range(0,len(index_list)):
 
 
 #Find exact amount of days
-tempvar = date[0]
-tempvar = int(tempvar)
-for i in range(0, plant_time_months):
-    plant_time_days += date_dict[f"{tempvar}"]
-    tempvar += 1
-    print(plant_time_days)
+# tempvar = date[0]
+# tempvar = int(tempvar)
+# for i in range(0, plant_time_months):
+#     plant_time_days += date_dict[f"{tempvar}"]
+#     tempvar += 1
+#     print(plant_time_days)
 
 # Get the total temperature from each index for the date
 for x in index_list:
+    print(type(plant_time_days))
     for i in range(0, plant_time_days):
         #print("Current index: ", x)
         avg_temp += tmp[x]
