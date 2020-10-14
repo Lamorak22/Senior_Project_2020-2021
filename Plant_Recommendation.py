@@ -16,23 +16,21 @@ def findDate(index, date):
 def findAvgTempC(index_list, plant_time_days, tmp, avg_temp, cnt):
     # Get the total temperature from each index for the date
     for x in index_list:
-        for i in range(0, int(plant_time_days[cnt])):
+        for i in range(x, x + int(plant_time_days[cnt])):
             avg_temp += tmp[i]
             #print("avg_temp: ", avg_temp)
         print("avg_temp: ", avg_temp)
     
     print("Plant_time_days: ", plant_time_days[cnt])
-    print("len(index_list): ", len(index_list))
 
-    return avg_temp/(plant_time_days[cnt])
+    return avg_temp/(plant_time_days[cnt]*len(index_list))
 
 
 
 # All used variables
 index = 0
-date = "6/1"
+date = "4/1"
 avg_temp = 0
-plant_time_months = 3
 total_days = 0
 
 # Read the file for weather data
@@ -47,28 +45,35 @@ min_tempC = df2['min_tempC'] # Minimum temperatures for each plant
 growth_time = df2['growth_time_days'] # Growth time for each plant
 
 # Parse the database to find the plants in the "to_plant_list"
-to_plant_list = ["Tomato", "Spinach", "Celery"]
-plant_time_days = [None] * len(to_plant_list)
-min_tempC_list = [None] * len(to_plant_list)
+to_plant_list = [None] * len(plant)
+plant_time_days = [None] * len(plant)
+min_tempC_list = [None] * len(plant)
 
-counter = 0
-loopcnt = 0
-for x in plant:
-    if counter >= len(to_plant_list):
-        break
-    elif x == to_plant_list[counter]:
-        print("Success, found: ", x, "at row: ", loopcnt)
-        plant_time_days[counter] = growth_time[loopcnt]
-        min_tempC_list[counter] = min_tempC[loopcnt]
-        print("Growth time: ", plant_time_days[counter], "days")
-        print("Growth temperature: ", min_tempC_list[counter], "degrees C")
-        counter += 1
-    loopcnt += 1
+# counter = 0
+# loopcnt = 0
+# for x in plant:
+#     if counter >= len(to_plant_list):
+#         break
+#     elif x == to_plant_list[counter]:
+#         print("Success, found: ", x, "at row: ", loopcnt)
+#         plant_time_days[counter] = growth_time[loopcnt]
+#         min_tempC_list[counter] = min_tempC[loopcnt]
+#         print("Growth time: ", plant_time_days[counter], "days")
+#         print("Growth temperature: ", min_tempC_list[counter], "degrees C")
+#         counter += 1
+#     loopcnt += 1
+for x in range(0, len(plant)):
+    to_plant_list[x] = plant[x]
+    plant_time_days[x] = growth_time[x]
+    min_tempC_list[x] = min_tempC[x]
 
+print(to_plant_list)
+print(plant_time_days)
+print(min_tempC_list)
 print("out of loop")
 
 # Find all of the indexes of selected date
-index_list = [0,0,0,0,0] # Only using 5 date indexes right now
+index_list = [0,0,0,0,0,0,0,0,0,0] 
 for x in range(0,len(index_list)):
     index = findDate(index, date)
     # The index variable is the index of each instance of the date
@@ -83,7 +88,7 @@ for x in range(0, len(to_plant_list)):
     temp = findAvgTempC(index_list, plant_time_days, tmp, avg_temp, x)
     temp = int(temp) #temp is not int. Needs to be an int for if statement
     if temp > int(min_tempC_list[x]):
-        print("Average temperature is: ", temp, "Good to plant")
+        print("Average temperature is: ", temp, "Good to plant", to_plant_list[x])
     else:
-        print("Average temperature is: ", temp, "Not good to plant")
+        print("Average temperature is: ", temp, "Not good to plant", to_plant_list[x])
 
