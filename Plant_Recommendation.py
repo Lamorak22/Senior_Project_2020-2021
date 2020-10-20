@@ -18,8 +18,7 @@ def findAvgTempC(index_list, plant_time_days, tmp, avg_temp, cnt):
     for x in index_list:
         for i in range(x, x + int(plant_time_days[cnt])):
             avg_temp += tmp[i]
-            #print("avg_temp: ", avg_temp)
-        print("avg_temp: ", avg_temp)
+        #print("avg_temp: ", avg_temp)
     
     print("Plant_time_days: ", plant_time_days[cnt])
 
@@ -46,22 +45,10 @@ growth_time = df2['growth_time_days'] # Growth time for each plant
 
 # Parse the database to find the plants in the "to_plant_list"
 to_plant_list = [None] * len(plant)
-plant_time_days = [None] * len(plant)
 min_tempC_list = [None] * len(plant)
+plant_time_days = [None] * len(plant)
 
-# counter = 0
-# loopcnt = 0
-# for x in plant:
-#     if counter >= len(to_plant_list):
-#         break
-#     elif x == to_plant_list[counter]:
-#         print("Success, found: ", x, "at row: ", loopcnt)
-#         plant_time_days[counter] = growth_time[loopcnt]
-#         min_tempC_list[counter] = min_tempC[loopcnt]
-#         print("Growth time: ", plant_time_days[counter], "days")
-#         print("Growth temperature: ", min_tempC_list[counter], "degrees C")
-#         counter += 1
-#     loopcnt += 1
+
 for x in range(0, len(plant)):
     to_plant_list[x] = plant[x]
     plant_time_days[x] = growth_time[x]
@@ -88,7 +75,7 @@ for x in range(0, len(to_plant_list)):
     temp = findAvgTempC(index_list, plant_time_days, tmp, avg_temp, x)
     temp = int(temp) #temp is not int. Needs to be an int for if statement
     if temp > int(min_tempC_list[x]):
-        print("Average temperature is: ", temp, "Good to plant", to_plant_list[x])
+        print(f"Average temperature is: {temp}, {to_plant_list[x]} is good to plant")
     else:
-        print("Average temperature is: ", temp, "Not good to plant", to_plant_list[x])
+        print(f"Average temperature is: {temp}, {to_plant_list[x]} is not good to plant")
 
