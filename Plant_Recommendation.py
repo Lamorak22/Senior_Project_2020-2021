@@ -18,9 +18,9 @@ def findAvgTempC(index_list, plant_time_days, tmp, avg_temp, cnt):
     for x in index_list:
         for i in range(x, x + int(plant_time_days[cnt])):
             avg_temp += tmp[i]
-        #print("avg_temp: ", avg_temp)
     
-    print("Plant_time_days: ", plant_time_days[cnt])
+    #print("avg_temp: ", avg_temp)
+    #print("Plant_time_days: ", plant_time_days[cnt])
 
     return avg_temp/(plant_time_days[cnt]*len(index_list))
 
@@ -54,10 +54,6 @@ for x in range(0, len(plant)):
     plant_time_days[x] = growth_time[x]
     min_tempC_list[x] = min_tempC[x]
 
-print(to_plant_list)
-print(plant_time_days)
-print(min_tempC_list)
-print("out of loop")
 
 # Find all of the indexes of selected date
 index_list = [0,0,0,0,0,0,0,0,0,0] 
@@ -75,7 +71,7 @@ for x in range(0, len(to_plant_list)):
     temp = findAvgTempC(index_list, plant_time_days, tmp, avg_temp, x)
     temp = int(temp) #temp is not int. Needs to be an int for if statement
     if temp > int(min_tempC_list[x]):
-        print(f"Average temperature is: {temp}, {to_plant_list[x]} is good to plant")
+        print(f"Average temperature is: {temp}, {to_plant_list[x]}'s minimum temperature is {min_tempC_list[x]}, so it is good to plant")
     else:
-        print(f"Average temperature is: {temp}, {to_plant_list[x]} is not good to plant")
+        print(f"Average temperature is: {temp}, {to_plant_list[x]}'s minimum temperature is {min_tempC_list[x]}, so it is not good to plant")
 
