@@ -28,7 +28,7 @@ def findAvgTempC(index_list, plant_time_days, tmp, avg_temp, cnt):
 
 # All used variables
 index = 0
-date = "4/1"
+date = "5/1"
 avg_temp = 0
 total_days = 0
 
