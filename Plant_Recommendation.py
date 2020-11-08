@@ -18,17 +18,13 @@ def findAvgTempC(index_list, plant_time_days, tmp, avg_temp, cnt):
     for x in index_list:
         for i in range(x, x + int(plant_time_days[cnt])):
             avg_temp += tmp[i]
-    
-    #print("avg_temp: ", avg_temp)
-    #print("Plant_time_days: ", plant_time_days[cnt])
-
     return avg_temp/(plant_time_days[cnt]*len(index_list))
 
 
 
 # All used variables
 index = 0
-date = "5/1"
+date = "4/1"
 avg_temp = 0
 total_days = 0
 
