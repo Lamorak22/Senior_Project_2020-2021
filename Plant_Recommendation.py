@@ -24,7 +24,6 @@ def findAvgTempC(index_list, plant_time_days, tempC, avg_temp, cnt):
     return avg_temp/(plant_time_days[cnt]*len(index_list))
 
 
-
 # All used variables
 index = 0
 avg_temp = 0
