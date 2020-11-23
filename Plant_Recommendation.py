@@ -32,7 +32,7 @@ avg_temp = 0
 date = "04-01"
 
 # Read the file for weather data and put into dataframe
-df = pd.read_excel("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603_excel_test.xlsx")#.set_index('date_time')
+df = pd.read_excel("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603_Weather.xlsx")#.set_index('date_time')
 date_t = df['date_time'] # Variable for list of dates
 tempC = df['tempC'] # Variable for average temperature at each date
 
