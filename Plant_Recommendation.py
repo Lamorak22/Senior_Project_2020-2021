@@ -27,9 +27,11 @@ def findAvgTempC(index_list, plant_time_days, tempC, avg_temp, cnt):
 
 # All used variables
 index = 0
-date = "4/1"
 avg_temp = 0
 total_days = 0
+
+# Get tentative planting date
+date = "04/01"
 
 # Read the file for weather data and put into dataframe
 df = pd.read_csv("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603.csv")#.set_index('date_time')
@@ -42,11 +44,11 @@ plant = df2['Plant'] # Plant names
 min_tempC = df2['min_tempC'] # Minimum temperatures for each plant
 growth_time = df2['growth_time_days'] # Growth time for each plant
 
-# Parse the database to find the plants in the "to_plant_list"
+
+# Create lists with correct amount of indexes
 to_plant_list = [None] * len(plant)
 min_tempC_list = [None] * len(min_tempC)
 plant_time_days = [None] * len(growth_time)
-
 
 # Transfer data from pandas over to list format from "class 'pandas.core.series.Series'"
 for x in range(0, len(plant)):
@@ -56,7 +58,7 @@ for x in range(0, len(plant)):
 
 
 # Find all of the indexes of selected date from 2010 to 2020
-index_list = [0,0,0,0,0,0,0,0,0,0] 
+index_list = [None] * 10
 for x in range(0,len(index_list)):
     index = findDate(index, date)
     # The index variable is the index of each instance of the date
