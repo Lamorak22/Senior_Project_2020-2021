@@ -8,7 +8,7 @@ def findDate(index, date):
     date_flag = False
     while date_flag == False:
         # .find() will return -1 when false
-        result = date_t[index].find(date + '/')
+        result = date_t[index].find(date)
         if result != -1:
             date_flag = True
             print("Date found at index: ", index)
@@ -28,13 +28,12 @@ def findAvgTempC(index_list, plant_time_days, tempC, avg_temp, cnt):
 # All used variables
 index = 0
 avg_temp = 0
-total_days = 0
 
 # Get tentative planting date
-date = "04/01"
+date = "04-01"
 
 # Read the file for weather data and put into dataframe
-df = pd.read_csv("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603.csv")#.set_index('date_time')
+df = pd.read_excel("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation\\97603_excel_test.xlsx")#.set_index('date_time')
 date_t = df['date_time'] # Variable for list of dates
 tempC = df['tempC'] # Variable for average temperature at each date
 
@@ -68,12 +67,18 @@ for x in range(0,len(index_list)):
 
 #Print out average temperature for each plant
 temp = 0
+final_to_plant_list = []
+final_dont_plant_list = []
 for x in range(0, len(to_plant_list)):
     avg_temp = 0
     temp = findAvgTempC(index_list, plant_time_days, tempC, avg_temp, x)
     temp = int(temp) #temp is not int. Needs to be an int for if statement
     if temp > int(min_tempC_list[x]):
         print(f"Average temperature is: {temp}, {to_plant_list[x]}'s minimum temperature is {min_tempC_list[x]}, so it is good to plant")
+        final_to_plant_list.append(to_plant_list[x])
     else:
         print(f"Average temperature is: {temp}, {to_plant_list[x]}'s minimum temperature is {min_tempC_list[x]}, so it is not good to plant")
+        final_dont_plant_list.append(to_plant_list[x])
 
+print("Good to plant: ", final_to_plant_list)
+print("Not good to plant: ", final_dont_plant_list)
