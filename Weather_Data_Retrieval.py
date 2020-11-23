@@ -11,7 +11,7 @@ os.chdir("F:\\Daniels Stuff\\Coding Stuff\\Plant recommendation")
 frequency=24
 start_date = '01-JAN-2010'
 end_date = '27-SEP-2020'
-api_key = '1354d0c9698c486ea3e191604200408'
+api_key = '' 
 location_list = ['97603']
 
 hist_weather_data = retrieve_hist_data(api_key,
