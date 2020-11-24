@@ -5,12 +5,9 @@ import pandas as pd
 
 #Find the date within the dataframe
 def findDate(index, date):
-    date_flag = False
-    while date_flag == False:
-        # .find() will return -1 when false
-        result = date_t[index].find(date)
+    while True:
+        result = date_t[index].find(date)# .find() will return -1 when false
         if result != -1:
-            date_flag = True
             print("Date found at index: ", index)
             return index 
         else:
@@ -29,7 +26,7 @@ index = 0
 avg_temp = 0
 
 # Get tentative planting date
-date = "01-01"
+date = "06-01"
 
 # Read the file for weather data and put into dataframe
 df = pd.read_excel("97603_Weather.xlsx")#.set_index('date_time')
