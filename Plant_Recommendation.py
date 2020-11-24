@@ -29,7 +29,7 @@ index = 0
 avg_temp = 0
 
 # Get tentative planting date
-date = "04-01"
+date = "01-01"
 
 # Read the file for weather data and put into dataframe
 df = pd.read_excel("97603_Weather.xlsx")#.set_index('date_time')
@@ -43,24 +43,23 @@ min_tempC = df2['min_tempC'] # Minimum temperatures for each plant
 growth_time = df2['growth_time_days'] # Growth time for each plant
 
 
-# Create lists with correct amount of indexes
-to_plant_list = [None] * len(plant)
-min_tempC_list = [None] * len(min_tempC)
-plant_time_days = [None] * len(growth_time)
+# Create lists
+to_plant_list = []
+min_tempC_list = []
+plant_time_days = []
 
 # Transfer data from pandas over to list format from "class 'pandas.core.series.Series'"
 for x in range(0, len(plant)):
-    to_plant_list[x] = plant[x]
-    plant_time_days[x] = growth_time[x]
-    min_tempC_list[x] = min_tempC[x]
+    to_plant_list.append(plant[x])
+    plant_time_days.append(growth_time[x])
+    min_tempC_list.append(min_tempC[x])
 
 
 # Find all of the indexes of selected date from 2010 to 2020
 index_list = [None] * 10
 for x in range(0,len(index_list)):
     index = findDate(index, date)
-    # The index variable is the index of each instance of the date
-    index_list[x] = index
+    index_list[x] = index #The index variable is the index of each instance of the date
     index += 1
     
 
@@ -72,6 +71,7 @@ for x in range(0, len(to_plant_list)):
     avg_temp = 0
     temp = findAvgTempC(index_list, plant_time_days, tempC, avg_temp, x)
     temp = int(temp) #temp is not int. Needs to be an int for if statement
+    
     if temp > int(min_tempC_list[x]):
         print(f"Average temperature is: {temp}, {to_plant_list[x]}'s minimum temperature is {min_tempC_list[x]}, so it is good to plant")
         final_to_plant_list.append(to_plant_list[x])
