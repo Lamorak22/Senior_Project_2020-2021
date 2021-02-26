@@ -8,7 +8,7 @@ export function getWeatherData(){
     {params : 
         {
             q: 97601,
-            date: "2010-01-01", 
+            date: "2020-01-01", 
             enddate: "2021-01-01",
             includelocation: "yes",
             tp: 24,
