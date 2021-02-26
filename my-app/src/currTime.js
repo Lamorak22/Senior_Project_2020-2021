@@ -14,8 +14,8 @@ export const CurrTime = () => {
 
     return(
         <div>
-            <p> Current Time: {date.toLocaleTimeString()}</p>
-            <p> Date: {date.toLocaleDateString()}</p>
+        <div>Current Time: {date.toLocaleTimeString()}</div>
+        <div>Date: {date.toLocaleDateString()}</div>
         </div>
     )
 }
