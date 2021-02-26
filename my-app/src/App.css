@@ -14,24 +14,42 @@
   border: 1px solid rgb(255, 255, 255);
 }
 
-.h1 {
-  text-align: right;
-}
-
-.h2{
-  text-align: left;
-}
 
 .wrappingimage  {   
-  text-align: left;
-  padding: 0 10px 0 0;
+  display: flex;
+  flex-direction: row;
+  align-items: left;
 }
 
-.calendarwrapper {
-  /*display: flex;*/
-  width: 750px;
+.imagetext {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+}
+
+prp {
+  display: flex;
+  flex-direction: row;
+  /* width: 1600px; */
+}
+
+.calendar {
+  flex: 0.4;
+  padding: 50px;
 }
 
 .text_entry {
-  width: 150px;
+  flex: 2;
+  padding: 50px;
+}
+
+.prpoutput {
+  flex: 0.3;
+  padding: 50px;
+}
+
+.chooseplant {
+  flex: 0.1;
+  
 }
